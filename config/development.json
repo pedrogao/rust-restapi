@@ -1,0 +1,5 @@
+{
+  "environment": "development",
+
+  "logger_level": "info"
+}

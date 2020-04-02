@@ -1,0 +1,5 @@
+{
+  "environment": "production",
+
+  "logger_level": "info"
+}
