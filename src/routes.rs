@@ -7,6 +7,7 @@ use crate::handlers::{
     user::{create_user, delete_user, get_user, get_users, update_user},
 };
 use crate::middleware::auth::Auth as AuthMiddleware;
+use crate::websocket::ws::ws_index;
 // use actix_files::Files;
 use actix_web::web;
 
@@ -14,6 +15,8 @@ pub fn routes(cfg: &mut web::ServiceConfig) {
     cfg
         // Health check
         .route("/health", web::get().to(get_health))
+        // websocket
+        .service(web::resource("/ws").route(web::get().to(ws_index)))
         // /api/v1 routes
         .service(
             web::scope("/api/v1")

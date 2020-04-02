@@ -11,7 +11,7 @@ extern crate validator_derive;
 
 use crate::config::CONFIG;
 use crate::server::server;
-use log::{info, LevelFilter};
+use log::{debug, LevelFilter};
 use log4rs;
 use log4rs::config::Config;
 
@@ -31,6 +31,7 @@ mod server;
 mod state;
 mod tests;
 mod validate;
+mod websocket;
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
@@ -41,7 +42,7 @@ async fn main() -> std::io::Result<()> {
         .root_mut()
         .set_level(level_filter(&CONFIG.logger_level));
     log4rs::init_config(config).unwrap();
-    info!("init log config file...");
+    debug!("init log config file...");
     server().await
 }
 
