@@ -1,5 +1,5 @@
 {
   "environment": "development",
 
-  "logger_level": "info"
+  "logger_level": "debug"
 }

@@ -24,6 +24,7 @@ pub struct IConfig {
     pub redis_url: String,
     // pub rust_backtrace: u8,
     pub rust_log: String,
+    pub logger_level: String,
     pub server: String,
     pub session_key: String,
     pub session_name: String,
@@ -39,10 +40,6 @@ lazy_static! {
 /// Use envy to inject dotenv and env vars into the Config struct
 fn get_config() -> IConfig {
     dotenv().ok();
-    // match envy::from_env::<Config>() {
-    //     Ok(config) => config,
-    //     Err(error) => panic!("Configuration Error: {:#?}", error),
-    // }
     let mut config = Config::new();
 
     config

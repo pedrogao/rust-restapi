@@ -20,8 +20,6 @@ use listenfd::ListenFd;
 
 pub async fn server() -> std::io::Result<()> {
     dotenv::dotenv().ok();
-    env_logger::init();
-
     // Create the application state
     // String is used here, but it can be anything
     // Invoke in hanlders using data: AppState<'_, String>
