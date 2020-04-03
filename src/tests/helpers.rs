@@ -9,7 +9,7 @@ pub mod tests {
     use crate::state::{new_state, AppState};
     use actix_web::dev::ServiceResponse;
     use actix_web::{test, web::Data, App};
-    use diesel::mysql::MysqlConnection;
+    use diesel::sqlite::SqliteConnection;
     use serde::Serialize;
 
     /// Helper for HTTP GET integration tests
@@ -100,12 +100,12 @@ pub mod tests {
     }
 
     /// Returns a r2d2 Pooled Connection to be used in tests
-    pub fn get_pool() -> Pool<MysqlConnection> {
-        init_pool::<MysqlConnection>(CONFIG.clone()).unwrap()
+    pub fn get_pool() -> Pool<SqliteConnection> {
+        init_pool::<SqliteConnection>(CONFIG.clone()).unwrap()
     }
 
     /// Returns a r2d2 Pooled Connection wrappedn in Actix Application Data
-    pub fn get_data_pool() -> Data<Pool<MysqlConnection>> {
+    pub fn get_data_pool() -> Data<Pool<SqliteConnection>> {
         Data::new(get_pool())
     }
 

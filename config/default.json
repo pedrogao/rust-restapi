@@ -1,7 +1,7 @@
 {
   "auth_salt": "CHANGEME",
-  "database": "mysql",
-  "databse_url": "mysql://root:123456@127.0.0.1:3306/rustapi",
+  "database": "sqlite",
+  "databse_url": "file:rustapi.db",
   "jwt_expiraation": 24,
   "jwt_key": "4125442A472D4B614E645267556B58703273357638792F423F4528482B4D6251",
   "redis_url": "127.0.0.1:6379",
