@@ -7,7 +7,11 @@ use actix_web::{
 };
 
 pub fn bad_request<B>(res: dev::ServiceResponse<B>) -> Result<ErrorHandlerResponse<B>> {
-  let new_res = res.map_body(|_resphead, _respbody| {
+  let new_res = res.map_body(|resphead, _respbody| {
+    resphead.headers_mut().insert(
+      header::CONTENT_TYPE,
+      HeaderValue::from_static("application/json"),
+    );
     dev::ResponseBody::Other(dev::Body::Message(Box::new(r#"{"errors":["bad_request"]"#)))
   });
   Ok(ErrorHandlerResponse::Response(new_res))
@@ -25,7 +29,11 @@ pub fn not_found<B>(res: dev::ServiceResponse<B>) -> Result<ErrorHandlerResponse
 }
 
 pub fn internal_server_error<B>(res: dev::ServiceResponse<B>) -> Result<ErrorHandlerResponse<B>> {
-  let new_res = res.map_body(|_resphead, _respbody| {
+  let new_res = res.map_body(|resphead, _respbody| {
+    resphead.headers_mut().insert(
+      header::CONTENT_TYPE,
+      HeaderValue::from_static("application/json"),
+    );
     dev::ResponseBody::Other(dev::Body::Message(Box::new(
       r#"{"errors":["internal_server_error"]}"#,
     )))
