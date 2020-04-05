@@ -71,7 +71,7 @@ lazy_static! {
 fn get_config() -> IConfig {
     dotenv().ok();
     let mut config = Config::new();
-
+    
     config
         .merge(File::with_name("config/default"))
         .expect("merge default config file error");
