@@ -40,7 +40,7 @@ async fn main() -> std::io::Result<()> {
         log4rs::load_config_file("config/log4rs.yaml", Default::default()).unwrap();
     config
         .root_mut()
-        .set_level(level_filter(&CONFIG.logger_level));
+        .set_level(level_filter(&CONFIG.logger.level));
     log4rs::init_config(config).unwrap();
     debug!("init log config file...");
     server().await

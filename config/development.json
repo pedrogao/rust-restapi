@@ -1,5 +1,5 @@
 {
-  "environment": "development",
+  "active_profile": "development",
 
-  "logger_level": "debug"
+  "logger": { "level": "debug" }
 }

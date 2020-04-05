@@ -56,7 +56,7 @@ pub async fn server() -> std::io::Result<()> {
     server = if let Some(l) = listenfd.take_tcp_listener(0)? {
         server.listen(l)?
     } else {
-        server.bind(&CONFIG.server)?
+        server.bind(&CONFIG.server.url)?
     };
 
     server.run().await

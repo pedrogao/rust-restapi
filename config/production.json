@@ -1,5 +1,5 @@
 {
-  "environment": "production",
+  "active_profile": "production",
 
-  "logger_level": "info"
+  "logger": { "level": "info" }
 }

@@ -47,7 +47,7 @@ pub enum InferPool {
 
 impl InferPool {
     pub fn init_pool(config: IConfig) -> Result<Self, r2d2::Error> {
-        match config.database {
+        match config.database.driver {
             DatabaseConnection::Cockroach => {
                 init_pool::<PgConnection>(config).map(InferPool::Cockroach)
             }
@@ -67,7 +67,7 @@ pub fn init_pool<T>(config: IConfig) -> Result<Pool<T>, PoolError>
 where
     T: Connection + 'static,
 {
-    let manager = ConnectionManager::<T>::new(config.database_url);
+    let manager = ConnectionManager::<T>::new(config.database.url);
     Pool::builder().build(manager)
 }
 
